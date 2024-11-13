@@ -30,6 +30,6 @@ Before you begin, ensure you have met the following requirements:
 1. **Clone the repository:**
 
    bash
-   git clone https://github.com/Anikesh0001/ppt-generator.git
-   cd ppt-generator
-   python3 ppt.py
+   1.git clone https://github.com/Anikesh0001/ppt-generator.git
+   2.cd ppt-generator
+   3.python3 ppt.py
