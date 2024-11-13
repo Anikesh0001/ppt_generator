@@ -7,7 +7,7 @@ from PIL import Image
 from io import BytesIO
 
 # Configure API key
-os.environ["API_KEY"] = 'AIzaSyCd_BLtcUii28mpEDGz-vAkKuSE4HgghTI'  # Replace with your actual API key
+os.environ["API_KEY"] = 'Your Api Key'  # Replace with your actual API key
 genai.configure(api_key=os.environ["API_KEY"])
 
 # Initialize the Gemini model at the global level
