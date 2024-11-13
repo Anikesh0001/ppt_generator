@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presentation Generator</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js" defer></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      #loading {
+        display: none;
+        margin-top: 20px;
+      }
+      #preview {
+        margin-top: 10px;
+        max-width: 100%;
+        max-height: 300px;
+        display: none; /* Hide by default */
+      }
+      .message {
+        margin-top: 10px;
+        display: none; /* Hide by default */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5">Generate Your Presentation</h1>
+      <form
+        action="/generate"
+        method="post"
+        enctype="multipart/form-data"
+        class="mt-4"
+      >
+        <div class="form-group">
+          <label for="topic">Presentation Topic:</label>
+          <input
+            type="text"
+            id="topic"
+            name="topic"
+            class="form-control"
+            required
+          />
+          <small id="topicHelp" class="form-text text-muted"
+            >Please enter a valid topic.</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="custom_background"
+            >Upload Custom Background Image (optional):</label
+          >
+          <input
+            type="file"
+            id="custom_background"
+            name="custom_background"
+            class="form-control-file"
+            accept="image/*"
+            onchange="previewImage(event)"
+          />
+          <div id="image-message" class="text-danger"></div>
+        </div>
+        <img id="preview" class="img-fluid" alt="Image Preview" />
+        <button type="submit" class="btn btn-success mt-3">
+          Generate Presentation
+        </button>
+      </form>
+      <div id="loading">
+        Generating Presentation... <img src="loading.gif" alt="Loading..." />
+      </div>
+      <div
+        class="modal fade"
+        id="messageModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="messageModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="messageModalLabel">Message</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="modal-message">
+              <!-- Success or error message will be displayed here -->
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
